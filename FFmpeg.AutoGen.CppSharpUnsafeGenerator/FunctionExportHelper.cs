@@ -16,7 +16,7 @@ namespace FFmpeg.AutoGen.CppSharpUnsafeGenerator
                 var libraryFullName = Path.GetFileNameWithoutExtension(libraryPath);
                 var libraryNameParts = libraryFullName.Split('-');
                 var libraryName = libraryNameParts[0];
-                var libraryVersion = int.Parse(libraryNameParts[1]);
+                var libraryVersion = libraryNameParts.Length == 1 ? 0 : int.Parse(libraryNameParts[1]);
 
                 var exports = GetExports(libraryPath);
                 foreach (var export in exports) yield return new FunctionExport { LibraryName = libraryName, LibraryVersion = libraryVersion, Name = export};
